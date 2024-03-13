@@ -79,15 +79,14 @@ async function displayAlbums(){
     let array= Array.from(anchors)
         for (let index = 0; index < array.length; index++) {
             const e = array[index];
-             if(e.href.includes("/spotify/songs/")){ // ikkda nuvuu "/spotify/songs" ani icchav last lo / ivvadam marachipoyav so dhani valla folder array loki love,melodies tho patu songs anedhi kuda velthundhi and appudu fetch url em avuthundhi "http://127.0.0.1:5500/spotify/songs/${folder}/info.json" => "http://127.0.0.1:5500/spotify/songs/songs/info.json" so manaki songs lo songs lo info.json ledhu ga dhani valla error vacchindhi. OKKA "/" PETTADAM MARACHIPOVADAM VALLA IDHI ANTHA.
+             if(e.href.includes("/spotify/songs/")){ 
                 let folder=e.href.split("/").slice(-1)[0];
                 console.log(folder);
                 // Get the metadata of the folder
                 let a = await fetch(`http://127.0.0.1:5500/spotify/songs/${folder}/info.json`)
                 let response = await a.json();
                 //  console.log(response);
-
-               //IDHI NENU ADD CHESA 
+                
               cardContainer.innerHTML = cardContainer.innerHTML + ` <div data-folder="${folder}" class="card">
               <div class="play">
                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
